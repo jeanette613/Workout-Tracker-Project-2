@@ -48,7 +48,7 @@ app.get('/resistance/seed', (req, res) => {
         { name: "Bench", muscleGroup: "shoulders", reps: 8, sets: 4 },
     ]
 
-    //Delete all fruits
+    //Delete all 
     Resistance.deleteMany({}).then((data) => {
         Resistance.create(startResistance).then((data) => {
             res.json(data);
@@ -58,6 +58,9 @@ app.get('/resistance/seed', (req, res) => {
     })
 })
 
+app.post('/resistance', (req, res) => {
+    res.send('hi');
+});
 
 app.get('/resistance', (req, res) => {
     Resistance.find({})
