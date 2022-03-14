@@ -59,7 +59,6 @@ class DefaultLayout extends React.Component {
                                     <option>Arms</option>
                                     <option>Legs</option>
                                     <option>Core</option>
-                                    <option>Cardio</option>
                                 </select>
                             </div>
                             <div class="form-row">

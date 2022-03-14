@@ -58,17 +58,29 @@ app.get('/resistance/seed', (req, res) => {
     })
 })
 
-app.post('/resistance', (req, res) => {
-    res.send('hi');
+app.post("/resistance", (req, res) => {
+    req.body.readyToEat = req.body.readyToEat === "on" ? true : false;
+    // create the New fruit
+    Fruit.create(req.body)
+        .then((fruits) => {
+            // redirect user to Index page if successfully created item
+            res.redirect("/fruits");
+        })
+        // send error as json
+        .catch((error) => {
+            console.log(error);
+            res.json({ error });
+        });
 });
 
+//Index route
 app.get('/resistance', (req, res) => {
     Resistance.find({})
         .then((resistance) => {
             res.render('resistance/Index', { resistance })
         })
         .catch((error) => {
-            res.status(400).jason({ error })
+            res.status(400).json({ error })
         })
 })
 

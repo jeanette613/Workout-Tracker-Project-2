@@ -9,11 +9,11 @@ class Index extends React.Component {
             <DefaultLayout>
                 <div>
                     {
-                        resistance.map((fruit) => (
+                        resistance.map((resistances) => (
                             <article>
-                                <a href={`/fruits/${fruit._id}`}>
+                                <a href={`/resistance/${resistances._id}`}>
                                     <h2>
-                                        {fruit.name} - {fruit.readyToEat ? 'Ripe' : 'Not Ripe Yuck ich hässlich'}
+                                        {resistances.name} - {resistances.sets}
                                     </h2>
                                 </a>
                             </article>
