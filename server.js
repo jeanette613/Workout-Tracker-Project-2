@@ -75,15 +75,24 @@ app.post("/resistance", (req, res) => {
 
 //Index route
 app.get('/resistance', (req, res) => {
-    Resistance.find({})
-        .then((resistance) => {
-            res.render('resistance/Index', { resistance })
+    Resistance.find({}, (err, resistance) => {
+        res.render('resistance/Index', { resistances });
+    });
+});
+
+//show route
+app.get('/resistance/:id', (req, res) => {
+    const id = req.params.id;
+
+    Resistance.findById(id)
+        .then((resistances) => {
+            res.render('resistance/Show', { resistances });
         })
         .catch((error) => {
-            res.status(400).json({ error })
-        })
-})
-
+            console.log(error);
+            res.json({ error });
+        });
+});
 
 const PORT = process.env.PORT
 app.listen(PORT, () => console.log('Port is on'))
