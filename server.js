@@ -89,12 +89,37 @@ app.get('/exercises/New', (req, res) => {
     res.render('exercises/New');
 });
 
-//Edit route
-app.get('exercises/:id/Edit', (req, res) => {
+//update route
+app.put('/exercises/:id', (req, res) => {
+    const id = req.params.id;
+    Exercise.findByIdAndUpdate(id, req.body, { new: true })
+    then((exercise) => {
+        res.redirect('exercises');
+    })
+        .catch((error) => {
+            console.log(error);
+            res.json({ error });
+        });
+});
+
+//Edit route ****BROKEN!!!!****
+app.get('/exercises/:id/Edit', (req, res) => {
     const id = req.params.id;
     Exercise.findById(id)
         .then((exercise) => {
             res.render('exercises/Edit.jsx', { exercise });
+        })
+        .catch((error) => {
+            console.log(error);
+            res.json({ error });
+        });
+});
+
+app.delete('/exercises/:id', (req, res) => {
+    const id = req.params.id;
+    Exercise.findByIdAndRemove(id)
+        .then((exercise) => {
+            res.redirect('/exercises');
         })
         .catch((error) => {
             console.log(error);
