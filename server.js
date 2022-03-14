@@ -76,7 +76,7 @@ app.post("/resistance", (req, res) => {
 //Index route
 app.get('/resistance', (req, res) => {
     Resistance.find({}, (err, resistance) => {
-        res.render('resistance/Index', { resistances });
+        res.render('resistance/Index', { resistance });
     });
 });
 
