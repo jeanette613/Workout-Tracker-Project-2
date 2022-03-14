@@ -3,17 +3,20 @@ const DefaultLayout = require('../Default.jsx');
 
 class Index extends React.Component {
     render() {
-        const { resistance } = this.props;
+        const exercises = this.props.exercises;
         return (
             // In the render of your class
-            <DefaultLayout>
+            <DefaultLayout title={'Exercise Index Page'}>
+                <nav>
+                    <a href='/exercises/new'>Add New Exercise</a>
+                </nav>
                 <div>
                     {
-                        resistance.map((resistances) => (
+                        exercises.map((exercise) => (
                             <article>
-                                <a href={`/resistance/${resistances._id}`}>
+                                <a href={`/exercises/${exercise._id}`}>
                                     <h2>
-                                        {resistances.name} - {resistances.sets}
+                                        {exercise.name} - {exercise.muscleGroup}
                                     </h2>
                                 </a>
                             </article>

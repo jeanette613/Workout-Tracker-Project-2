@@ -3,10 +3,10 @@ const DefaultLayout = require('../Default');
 
 class New extends React.Component {
     render() {
-        const { resistances } = this.props
+        const { exercise } = this.props
         return (
             <DefaultLayout>
-                <form action="/resistance" method="post">
+                <form action="/exercises" method="post">
                     <fieldset>
                         <legend>Add New Exercise</legend>
                         <label>

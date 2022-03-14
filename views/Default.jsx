@@ -2,7 +2,7 @@ const React = require('react');
 
 class DefaultLayout extends React.Component {
     render() {
-        const { resistance } = this.props;
+        const { exercise } = this.props;
         return (
             <html lang="en">
                 <head>

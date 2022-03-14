@@ -4,6 +4,7 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const path = require('path');
+const res = require('express/lib/response');
 
 const DATABASE_URL = process.env.DATABASE_URL;
 const CONFIG = {
@@ -20,14 +21,14 @@ mongoose.connection
 
 const { Schema, model } = mongoose;
 
-const resistanceSchema = new Schema({
+const exercisesSchema = new Schema({
     name: String,
     muscleGroup: String,
     reps: Number,
     sets: Number,
 });
 
-const Resistance = model('Resistance', resistanceSchema);
+const Exercise = model('Exercise', exercisesSchema);
 
 const app = express()
 app.engine('jsx', require('express-react-views').createEngine());
@@ -39,24 +40,33 @@ app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.send('Server running')
-})
+    res.send('Server running');
+});
 
-app.get('/resistance/seed', (req, res) => {
-    const startResistance = [
+app.get('/exercises/seed', (req, res) => {
+    const startExercises = [
         { name: "Squat", muscleGroup: "legs", reps: 8, sets: 4 },
         { name: "Bench", muscleGroup: "shoulders", reps: 8, sets: 4 },
-    ]
+    ];
 
     //Delete all 
-    Resistance.deleteMany({}).then((data) => {
-        Resistance.create(startResistance).then((data) => {
+    Exercise.deleteMany({}).then((data) => {
+        Exercise.create(startExercises).then((data) => {
             res.json(data);
+        });
+    });
+});
+
+//Index route
+app.get('/exercises', (req, res) => {
+    Exercise.find({})
+        .then((exercises) => {
+            res.render('exercises/Index', { exercises });
         })
-    }).catch((err) => {
-        res.status(400).send(err)
-    })
-})
+        .catch((error) => {
+            res.json({ error });
+        });
+});
 
 app.post("/resistance", (req, res) => {
     //req.body.readyToEat = req.body.readyToEat === "on" ? true : false;
@@ -73,12 +83,6 @@ app.post("/resistance", (req, res) => {
         });
 });
 
-//Index route
-app.get('/resistance', (req, res) => {
-    Resistance.find({}, (err, resistance) => {
-        res.render('resistance/Index', { resistance });
-    });
-});
 
 //Edit route
 app.get('resistance/:id/Edit', (req, res) => {
@@ -94,12 +98,12 @@ app.get('resistance/:id/Edit', (req, res) => {
 });
 
 //show route
-app.get('/resistance/:id', (req, res) => {
+app.get('/exercises/:id', (req, res) => {
     const id = req.params.id;
 
-    Resistance.findById(id)
-        .then((resistances) => {
-            res.render('resistance/Show', { resistances });
+    Exercise.findById(id)
+        .then((exercise) => {
+            res.render('exercises/Show', { exercise });
         })
         .catch((error) => {
             console.log(error);

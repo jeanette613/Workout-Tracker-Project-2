@@ -3,20 +3,20 @@ const DefaultLayout = require('../Default');
 
 class Edit extends React.Component {
     render() {
-        const { resistances } = this.props
+        const { exercise } = this.props
         return (
 
             <DefaultLayout>
                 <div>
-                    <form action={`/resistance/${resistances._id}?_method=PUT`} method="post">
+                    <form action={`/exercises/${exercise._id}?_method=PUT`} method="post">
                         <fieldset>
-                            <legend>Edit {resistances.name}</legend>
+                            <legend>Edit {exercise.name}</legend>
                             <label>
                                 NAME:<input
                                     type="text"
                                     name="name"
                                     placeholder="enter exercise name"
-                                    value={resistances.name}
+                                    value={exercise.name}
                                 />
                             </label>
                             <label>
@@ -24,14 +24,14 @@ class Edit extends React.Component {
                                     type="text"
                                     name="color"
                                     placeholder="enter fruit name"
-                                    value={resistances.muscleGroup}
+                                    value={exercise.muscleGroup}
                                 />
                             </label>
                             <label>
                                 READY TO EAT:{this.props.fruit.readyToEat ? <input type="checkbox" name="readyToEat" defaultChecked /> : <input type="checkbox" name="readyToEat" />}
                             </label>
                         </fieldset>
-                        <input type="submit" value={`Edit ${resistances.name}`} />
+                        <input type="submit" value={`Edit ${exercise.name}`} />
                     </form>
                 </div>
             </DefaultLayout>
