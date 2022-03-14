@@ -23,6 +23,9 @@ class Index extends React.Component {
                         ))
                     }
                 </div>
+                <div>
+                    <a href='/exercises/New'><button>Add New Exercise Type</button></a>
+                </div>
             </DefaultLayout>
         )
     }

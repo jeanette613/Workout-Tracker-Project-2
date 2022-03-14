@@ -68,13 +68,14 @@ app.get('/exercises', (req, res) => {
         });
 });
 
-app.post("/resistance", (req, res) => {
+//create route
+app.post("/exercises", (req, res) => {
     //req.body.readyToEat = req.body.readyToEat === "on" ? true : false;
     // create the New fruit
-    Resistance.create(req.body)
-        .then((resistance) => {
+    Exercise.create(req.body)
+        .then((exercises) => {
             // redirect user to Index page if successfully created item
-            res.redirect("/resistance");
+            res.redirect("/exercises");
         })
         // send error as json
         .catch((error) => {
@@ -83,13 +84,17 @@ app.post("/resistance", (req, res) => {
         });
 });
 
+//New route
+app.get('/exercises/New', (req, res) => {
+    res.render('exercises/New');
+});
 
 //Edit route
-app.get('resistance/:id/Edit', (req, res) => {
+app.get('exercises/:id/Edit', (req, res) => {
     const id = req.params.id;
-    Resistance.findById(id)
-        .then((resistances) => {
-            res.render('resistance/Edit', { resistance });
+    Exercise.findById(id)
+        .then((exercise) => {
+            res.render('exercises/Edit.jsx', { exercise });
         })
         .catch((error) => {
             console.log(error);

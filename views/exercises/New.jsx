@@ -3,7 +3,7 @@ const DefaultLayout = require('../Default');
 
 class New extends React.Component {
     render() {
-        const { exercise } = this.props
+        const exercises = this.props.exercises;
         return (
             <DefaultLayout>
                 <form action="/exercises" method="post">

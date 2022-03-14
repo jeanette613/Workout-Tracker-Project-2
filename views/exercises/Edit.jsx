@@ -3,7 +3,7 @@ const DefaultLayout = require('../Default');
 
 class Edit extends React.Component {
     render() {
-        const { exercise } = this.props
+        const exercises = this.props.exercises;
         return (
 
             <DefaultLayout>
