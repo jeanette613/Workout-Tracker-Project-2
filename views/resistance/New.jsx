@@ -1,18 +1,25 @@
 const React = require('react');
+const DefaultLayout = require('../Default');
 
 class New extends React.Component {
     render() {
+        const { resistances } = this.props
         return (
-            <div>
-                <h1>Add New Exercise</h1>
-                {/* NOTE: action will be the route, method will be the HTTP verb */}
-                <form action="/fruits" method="POST">
-                    Name: <input type="text" name="name" /><br />
-                    Color: <input type="text" name="color" /><br />
-                    Is Ready To Eat: <input type="checkbox" name="readyToEat" /><br />
-                    <input type="submit" name="" value="Create Fruit" />
+            <DefaultLayout>
+                <form action="/resistance" method="post">
+                    <fieldset>
+                        <legend>Add New Exercise</legend>
+                        <label>
+                            NAME:<input type="text" name="name" placeholder="enter exercise name" />
+                        </label>
+                        <label>
+                            COLOR:<input type="text" name="color" placeholder="enter exercise name" />
+                        </label>
+                    </fieldset>
+                    <input type="submit" value="create New exercise Entry" />
                 </form>
-            </div>);
+            </DefaultLayout>
+        )
     }
 }
 
