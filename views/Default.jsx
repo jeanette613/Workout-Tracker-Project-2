@@ -44,7 +44,7 @@ class DefaultLayout extends React.Component {
                 </head>
                 <body>
                     <header>
-                        <h1>Workout Tracker App</h1>
+                        <h1>Powerlifting Program Tracker</h1>
                     </header>
 
                     <main>

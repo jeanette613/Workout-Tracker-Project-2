@@ -1,17 +1,20 @@
-@import url('https://fonts.googleapis.com/css?family=Comfortaa|Righteous');
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Prompt:wght@400&display=swap');
 
 body {
-  background: url(https://images.clipartlogo.com/files/istock/previews/8741/87414357-apple-seamless-pastel-colors-pattern-fruits-texture-background.jpg);
+  background: url(https://wallpapercave.com/wp/srM2MhP.jpg);
   margin: 0;
-  font-family: 'Comfortaa', cursive;
+  background-size: contain;
+  font-family: 'Barlow Condensed';
 }
 
 h1 {
-  font-family: 'Righteous', cursive;
-  background: antiquewhite;
+  font-family: 'Prompt';
+  text-size-adjust: auto;
+  background: lightblue;
   margin:0;
   margin-bottom: .5em;
-  padding: 1em;
+  padding: 2em;
   text-align: center;
 }
 

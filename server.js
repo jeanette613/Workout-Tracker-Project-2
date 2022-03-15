@@ -93,9 +93,9 @@ app.get('/exercises/New', (req, res) => {
 app.put('/exercises/:id', (req, res) => {
     const id = req.params.id;
     Exercise.findByIdAndUpdate(id, req.body, { new: true })
-    then((exercise) => {
-        res.redirect('exercises');
-    })
+        .then((exercise) => {
+            res.redirect('exercises');
+        })
         .catch((error) => {
             console.log(error);
             res.json({ error });
@@ -103,8 +103,9 @@ app.put('/exercises/:id', (req, res) => {
 });
 
 //Edit route ****BROKEN!!!!****
-app.get('/exercises/:id/Edit', (req, res) => {
+app.get('/exercises/:id/edit', (req, res) => {
     const id = req.params.id;
+    console.log(id)
     Exercise.findById(id)
         .then((exercise) => {
             res.render('exercises/Edit.jsx', { exercise });
@@ -133,6 +134,7 @@ app.get('/exercises/:id', (req, res) => {
 
     Exercise.findById(id)
         .then((exercise) => {
+            console.log(exercise)
             res.render('exercises/Show', { exercise });
         })
         .catch((error) => {

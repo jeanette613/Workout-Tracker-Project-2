@@ -3,7 +3,7 @@ const DefaultLayout = require('../Default');
 
 class Edit extends React.Component {
     render() {
-        const exercises = this.props.exercises;
+        const exercise = this.props.exercise;
         return (
 
             <DefaultLayout>
@@ -26,9 +26,6 @@ class Edit extends React.Component {
                                     placeholder="enter fruit name"
                                     value={exercise.muscleGroup}
                                 />
-                            </label>
-                            <label>
-                                READY TO EAT:{this.props.fruit.readyToEat ? <input type="checkbox" name="readyToEat" defaultChecked /> : <input type="checkbox" name="readyToEat" />}
                             </label>
                         </fieldset>
                         <input type="submit" value={`Edit ${exercise.name}`} />
