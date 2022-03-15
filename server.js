@@ -143,5 +143,5 @@ app.get('/exercises/:id', (req, res) => {
         });
 });
 
-const PORT = process.env.PORT
-app.listen(PORT, () => console.log('Port is on'))
+const PORT = process.env.PORT || 8000
+app.listen(PORT, () => { console.log('Port is on') })
