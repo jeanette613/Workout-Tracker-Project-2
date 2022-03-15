@@ -20,11 +20,27 @@ class Edit extends React.Component {
                                 />
                             </label>
                             <label>
-                                COLOR:<input
+                                Muscle Group:<input
                                     type="text"
-                                    name="color"
-                                    placeholder="enter fruit name"
+                                    name="muscleGroup"
+                                    placeholder="enter targeted muscle group"
                                     value={exercise.muscleGroup}
+                                />
+                            </label>
+                            <label>
+                                TOTAL REPS:<input
+                                    type="text"
+                                    name="Reps"
+                                    placeholder="enter targeted muscle group"
+                                    value={exercise.reps}
+                                />
+                            </label>
+                            <label>
+                                TOTAL SETS:<input
+                                    type="text"
+                                    name="total sets"
+                                    placeholder="Total sets"
+                                    value={exercise.sets}
                                 />
                             </label>
                         </fieldset>

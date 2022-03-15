@@ -7,9 +7,7 @@ class Index extends React.Component {
         return (
             // In the render of your class
             <DefaultLayout title={'Exercise Index Page'}>
-                <nav>
-                    <a href='/exercises/new'>Add New Exercise</a>
-                </nav>
+
                 <div>
                     {
                         exercises.map((exercise) => (
